@@ -1,0 +1,44 @@
+<% @page_title = "#{@entry.name}"%>
+
+<p>
+	<b>Created:</b>
+	<%= @entry.created_at.strftime('%-m/%-d/%Y') %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @entry.name %>
+</p>
+
+<!-- TO BE REMOVED WHEN SESSIONS INTRODUCED -->
+<p>
+  <b>User:</b>
+  <%= @entry.user_id %>
+</p>
+<!-- TO BE REMOVED WHEN SESSIONS INTRODUCED -->
+<p>
+  <b>Autolyse:</b>
+  <%= t @entry.autolyse.class %>
+</p>
+<p>
+  <b>Pre-ferment:</b>
+  <%= t @entry.pre_ferment.class %>
+</p>
+<p>
+  <b>Ingredients:</b>
+  <ol>
+	<% for ingredient in @entry.ingredients %>
+  	<li>
+		<%= ingredient.name %> - 
+			<% for portion in ingredient.entry_ingredients %>
+				<%= portion.quantity %>
+				<%= portion.unit %>
+			<% end %>
+	</li>
+	<% end %>
+  </ol>
+</p>
+
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>

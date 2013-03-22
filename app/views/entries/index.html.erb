@@ -1,0 +1,38 @@
+<% @page_title = "Entries"%>
+<h1>Journal Entries</h1>
+<% if @entries.blank? %>
+	<p>There are no entries yet, start baking and documenting!</p>
+<% else %>
+	<p>You have <%= pluralize(@entries.count, 'entry') %></p>
+	<%= form_tag destroy_multiple_entries_path, :method => :delete do %>
+	<table id="entries">
+		<tr class="header">
+			<th><input type="checkbox" id="checkHead"></th>
+			<th>Name</th>
+			<th>Grains</th>
+			<th>Autolyse</th>
+			<th>Pre-Ferment</th>
+			<th>Hydration</th>
+			<th>Modified</th>
+		</tr>
+		<tbody>
+		<% @entries.each do |e| %>
+		<tr class="<%= cycle('odd', 'even')%>">
+				<td><%= check_box_tag "entry_ids[]", e.id, false, :class => 'checkTbl' %></td>
+				<td><%= link_to(e.name, {:action => 'edit', :id => e.id} ) %></td>
+				<td><%= e.grains %></td>
+				<!-- translation is being called to set true and false as yes/no-->
+				<td><%= t e.autolyse.class %></td>
+				<td><%= t e.pre_ferment.class %></td>
+				<td><%= e.hydration %></td>
+				<td><%= e.updated_at.strftime('%-m/%-d/%Y') %></td>
+			</tr>
+		</tbody>
+		<% end %>
+	</table>
+	<%= submit_tag "Delete Selected", { :class => 'delete'} %>
+	<% end %>
+<% end %>
+<div class = "button">
+	<p><%= link_to "New Entry", {:action => 'new'}%></p>
+</div>

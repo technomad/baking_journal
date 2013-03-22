@@ -1,0 +1,56 @@
+<%= form_for(@entry) do |f| %>
+  <% if @entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul>
+      <% @entry.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!-- user_id will be removed from this form when user sessions are implemented-->
+  <div class = "field">
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :autolyse %><br />
+	<%= f.label :autolyse, "Yes", :value => "true"  %>
+    <%= f.radio_button :autolyse, true %>
+	<%= f.label :autolyse, "No", :value => "false" %>
+	<%= f.radio_button :autolyse, false, :checked => true %>
+  </div>
+  <div class="field">
+    <%= f.label :pre_ferment, "Pre-ferment" %><br />
+	<%= label :pre_ferment, "Yes" %>
+    <%= f.radio_button :pre_ferment, true %>
+	<%= label :pre_ferment, "No" %>
+	<%= f.radio_button :pre_ferment, false, :checked => true %>
+  </div>
+
+  <div id="ingredients">
+	  <p>Ingredient List:</p>
+	  <ul id="ingredient_list">
+		  <%= f.fields_for :ingredients do |builder| %>
+		  <%= render 'ingredient_fields', :f => builder %>
+		  <% end %>
+	  </ul>
+  </div>
+  <div id='add_ingredient'>Add Ingredient</div>
+  <div id='steps'>
+	  <p>Steps:</p>
+	  <ol id='step_list'>
+		  
+	  </ol>
+  </div>
+  <div id='add_step'>Add Step</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
