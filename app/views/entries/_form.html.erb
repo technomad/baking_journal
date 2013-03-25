@@ -37,7 +37,7 @@
   <div id="ingredients">
 	  <p>Ingredient List:</p>
 	  <ul id="ingredient_list">
-		  <%= f.fields_for :ingredients do |builder| %>
+		  <%= f.fields_for :entry_ingredients do |builder| %>
 		  <%= render 'ingredient_fields', :f => builder %>
 		  <% end %>
 	  </ul>

@@ -27,7 +27,7 @@ class EntriesController < ApplicationController
   # GET /entries/new.xml
   def new
     @entry = Entry.new
-    @entry.ingredients.build.entry_ingredients.build
+    @entry.entry_ingredients.build.build_ingredient
 
     respond_to do |format|
       format.html # new.html.erb

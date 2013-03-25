@@ -5,7 +5,7 @@ class Entry < ActiveRecord::Base
   
   before_save :default_name, :if => lambda { |e| e[:name].blank? }
   
-  accepts_nested_attributes_for :ingredients, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :entry_ingredients, :reject_if => lambda { |a| a[:quantity].blank? || a[:unit].blank? }, :allow_destroy => true
   
   def default_name
       self.name = Time.new
