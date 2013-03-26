@@ -1,3 +1,11 @@
-<%= f.label :name %>
-<%= f.text_field :name, :class => "ingredient_field" %>
-
+<li>
+	<%= f.fields_for :ingredients do |builder| %>
+	<%= render 'ingredient_fields', :f => builder %>
+	<% end %>
+	<%= f.label :quantity %>
+	<%= f.text_field :quantity, :class => "ingredient_quantity" %>
+	<%= f.label :unit %>
+	<%= f.text_field :unit, :class => "ingredient_unit" %>
+	<%= link_to "Remove", "#", :class => "remove_fields" %>
+	<%= f.hidden_field :_destroy, :class => "delete_ingredient" %>
+</li>
