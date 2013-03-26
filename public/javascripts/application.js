@@ -50,21 +50,22 @@ $(function(){
 		count = $('#ingredient_list li').length;
 		field = $('#ingredient_list li').first()
 			.clone() 									//clone the first element in the list
-				.find('input') 							//find all its inputs
-					.val('')  							//set all input values to blank
-						.end()							//return the ingredient_list li
-							.find('.ingredient_field')
-								.prop({id: 'entry_ingredients_attributes_' + count + '_name', name: 'entry[ingredients_attributes][' + count + '][name]'  })
-									.end()
-										.find('.delete_ingredient')
-											.prop({id: 'entry_ingredients_attributes_' + count + '__destroy', name: 'entry[ingredients_attributes][' + count + '][_destroy]', value: 'false'  })
-												.end()
-													.find('.ingredient_quantity')
-														.prop({id: 'entry_ingredients_attributes_' + count + '_entry_ingredients_attributes_' + count + '_quantity', name: 'entry[ingredients_attributes][' + count + '][entry_ingredients_attributes][' + count + '][quantity]'})
-															.end()
-																.find('.ingredient_unit')
-																	.prop({id: 'entry_ingredients_attributes_' + count + '_entry_ingredients_attributes_' + count + '_unit', name: 'entry[ingredients_attributes][' + count + '][entry_ingredients_attributes][' + count + '][unit]'})
-																		.end();
+				.show()									//make sure its not hidden
+					.find('input') 						//find all its inputs
+						.val('')  						//set all input values to blank
+							.end()						//return the ingredient_list li
+								.find('.ingredient_field')
+									.prop({id: 'entry_entry_ingredients_attributes_' + count + '_ingredient_attribute_name', name: 'entry[entry_ingredients_attributes][' + count + '][ingredient_attributes][name]'  })
+										.end()
+											.find('.delete_ingredient')
+												.prop({id: 'entry_entry_ingredients_attributes_' + count + '__destroy', name: 'entry[entry_ingredients_attributes][' + count + '][_destroy]', value: 'false'  })
+													.end()
+														.find('.ingredient_quantity')
+															.prop({id: 'entry_entry_ingredients_attributes_' + count + '_quantity', name: 'entry[entry_ingredients_attributes][' + count + '][quantity]'})
+																.end()
+																	.find('.ingredient_unit')
+																		.prop({id: 'entry_entry_ingredients_attributes_' + count + '_unit', name: 'entry[entry_ingredients_attributes][' + count + '][unit]'})
+																			.end();
 		$('#ingredient_list').append(field);
 	})
 	
