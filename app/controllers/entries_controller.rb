@@ -39,9 +39,18 @@ class EntriesController < ApplicationController
   # GET /entries/1/edit
   def edit
     @entry = Entry.find(params[:id])
-    #if no ingredients or steps were created on new action
-    #build the ingredient and/or build the step
+    
+    #if no ingredients
+    if @entry.ingredients.size == 0
+      #build an ingredient
+      @entry.entry_ingredients.build.build_ingredient
     #otherwise do nothing
+    end
+    #same for steps
+    if @entry.steps.size == 0
+      @entry.steps.build
+    end
+    
   end
 
   # POST /entries
