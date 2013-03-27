@@ -45,6 +45,20 @@ $(function(){
 		}
 	});
 	
+	//Remove a step from form
+	$('form').on('click', '.remove_fields', function(){
+		//only remove the element if there are more than 1
+		if ($('#step_list li').filter(":visible").length > 1) {
+			//set hidden value to destroy
+			$(this).prev('input[type=hidden]').val('1');
+			//hide the field so it looks like it was destroyed (submit will destroy it)
+			$(this).closest('li').hide();
+			event.preventDefault();
+		} else {
+			return false;
+		}
+	});
+	
 	//Add Ingredient to form
 	$('form').on('click', '#add_ingredient', function(){
 		count = $('#ingredient_list li').length;
@@ -68,6 +82,26 @@ $(function(){
 																			.end();
 		$('#ingredient_list').append(field);
 	})
+	
+	//Add Step to form
+	$('form').on('click', '#add_step', function(){
+		count = $('#step_list li').length;
+		field = $('#step_list li').first()
+			.clone() 									//clone the first element in the list
+				.show()									//make sure its not hidden
+					.find('textarea') 					//find its textarea
+						.val('')  						//set all input values to blank
+							.end()						//return the ingredient_list li
+								.find('.step_field')
+									.prop({id: 'entry_steps_attributes_' + count + '_description', name: 'entry[steps_attributes][' + count + '][description]'  })
+										.end()
+											.find('.delete_step')
+												.prop({id: 'entry_steps_attributes_' + count + '__destroy', name: 'entry[steps_attributes][' + count + '][_destroy]', value: 'false'  })
+													.end()
+		$('#step_list').append(field);
+	})
+	
+
 	
 });
 

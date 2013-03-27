@@ -48,7 +48,9 @@
 	  <ol id='step_list'>
 		  <%= f.fields_for :steps do |builder| %>
 		  <li>
-			  <%= builder.text_area :description %>
+			  <%= builder.text_area :description, :cols => 80, :rows => 5, :class => "step_field" %>
+			  <%= builder.hidden_field :_destroy, :class => "delete_step" %>
+			  <%= link_to "Remove", "#", :class => "remove_fields" %>
 		  </li>
 		  <% end %>
 	  </ol>
