@@ -28,6 +28,7 @@ class EntriesController < ApplicationController
   def new
     @entry = Entry.new
     @entry.entry_ingredients.build.build_ingredient
+    @entry.steps.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,6 +39,9 @@ class EntriesController < ApplicationController
   # GET /entries/1/edit
   def edit
     @entry = Entry.find(params[:id])
+    #if no ingredients or steps were created on new action
+    #build the ingredient and/or build the step
+    #otherwise do nothing
   end
 
   # POST /entries

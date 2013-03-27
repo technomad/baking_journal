@@ -31,6 +31,16 @@
 	<% end %>
   </ol>
 </p>
+<p>
+  <b>Steps:</b>
+  <ol>
+	<% for step in @entry.steps %>
+  	<li>
+		<%= step.description %>
+	</li>
+	<% end %>
+  </ol>
+</p>
 
 
 <%= link_to 'Edit', edit_entry_path(@entry) %> |

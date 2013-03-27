@@ -46,7 +46,11 @@
   <div id='steps'>
 	  <p>Steps:</p>
 	  <ol id='step_list'>
-		  
+		  <%= f.fields_for :steps do |builder| %>
+		  <li>
+			  <%= builder.text_area :description %>
+		  </li>
+		  <% end %>
 	  </ol>
   </div>
   <div id='add_step'>Add Step</div>
