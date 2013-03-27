@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(:version => 20130325000853) do
   create_table "entry_ingredients", :force => true do |t|
     t.integer  "entry_id"
     t.integer  "ingredient_id"
-    t.integer  "quantity"
+    t.decimal  "quantity",      :precision => 10, :scale => 2
     t.string   "unit"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
   end
 
   add_index "entry_ingredients", ["entry_id", "ingredient_id"], :name => "index_entry_ingredients_on_entry_id_and_ingredient_id"

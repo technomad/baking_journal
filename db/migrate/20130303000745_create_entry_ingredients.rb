@@ -3,7 +3,7 @@ class CreateEntryIngredients < ActiveRecord::Migration
     create_table :entry_ingredients do |t|
       t.references :entry
       t.references :ingredient
-      t.integer :quantity
+      t.decimal :quantity, :precision => 10, :scale => 2
       t.string :unit
 
       t.timestamps
