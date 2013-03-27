@@ -31,24 +31,10 @@ $(function(){
 		};
 	});
 	
-	//Remove an Ingredient from form
+	//Remove a list item form field
 	$('form').on('click', '.remove_fields', function(){
 		//only remove the element if there are more than 1
-		if ($('#ingredient_list li').filter(":visible").length > 1) {
-			//set hidden value to destroy
-			$(this).prev('input[type=hidden]').val('1');
-			//hide the field so it looks like it was destroyed (submit will destroy it)
-			$(this).closest('li').hide();
-			event.preventDefault();
-		} else {
-			return false;
-		}
-	});
-	
-	//Remove a step from form
-	$('form').on('click', '.remove_fields', function(){
-		//only remove the element if there are more than 1
-		if ($('#step_list li').filter(":visible").length > 1) {
+		if ($(this).closest('div').find('li').filter(":visible").length > 1) {
 			//set hidden value to destroy
 			$(this).prev('input[type=hidden]').val('1');
 			//hide the field so it looks like it was destroyed (submit will destroy it)
@@ -100,8 +86,6 @@ $(function(){
 													.end()
 		$('#step_list').append(field);
 	})
-	
-
-	
+		
 });
 
