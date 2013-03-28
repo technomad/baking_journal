@@ -6,7 +6,7 @@
 	<%= f.label :quantity %>
 	<%= f.text_field :quantity, :class => "ingredient_quantity" %>
 	<%= f.label :unit %>
-	<%= f.text_field :unit, :class => "ingredient_unit" %>
+	<%= f.select :unit, :class => "ingredient_unit", :prompt => "Please Select" %>
 	<%= f.hidden_field :_destroy, :class => "delete_ingredient" %>
 	<%= link_to "Remove", "#", :class => "remove_fields" %>
 </li>
