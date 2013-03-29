@@ -10,11 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< Updated upstream
-ActiveRecord::Schema.define(:version => 20130325000853) do
-=======
-ActiveRecord::Schema.define(:version => 20130323002438) do
->>>>>>> Stashed changes
+ActiveRecord::Schema.define(:version => 20130328234323) do
 
   create_table "entries", :force => true do |t|
     t.integer  "user_id"
@@ -55,6 +51,13 @@ ActiveRecord::Schema.define(:version => 20130323002438) do
   end
 
   add_index "steps", ["entry_id"], :name => "index_steps_on_entry_id"
+
+  create_table "units", :force => true do |t|
+    t.string   "name"
+    t.string   "unit_of"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username"
