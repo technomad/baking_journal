@@ -5,8 +5,8 @@
 	<% end %>
 	<%= f.label :quantity %>
 	<%= f.text_field :quantity, :class => "ingredient_quantity" %>
-	<%= f.label :unit %>
-	<%= f.text_field :unit, :class => "ingredient_unit" %>
+	<%= f.label :unit_id, "Unit" %>
+	<%= f.select :unit_id, Unit.all.map { |u| [u.name, u.id] }, { :prompt => "Please Select" }, { :class => "ingredient_unit" } %>
 	<%= f.hidden_field :_destroy, :class => "delete_ingredient" %>
 	<%= link_to "Remove", "#", :class => "remove_fields" %>
 </li>

@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+require 'open-uri'
+
+#Supply all the units of measurement to be used
+Unit.delete_all
+open("db/seeds/measurements.csv") do |measurements|
+  measurements.read.each_line do |measurement|
+    unit, uof = measurement.chomp.split(",")
+    Unit.create!(:name => unit, :unit_of => uof)
+  end
+end

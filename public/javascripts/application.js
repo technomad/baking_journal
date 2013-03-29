@@ -64,7 +64,7 @@ $(function(){
 															.prop({id: 'entry_entry_ingredients_attributes_' + count + '_quantity', name: 'entry[entry_ingredients_attributes][' + count + '][quantity]'})
 																.end()
 																	.find('.ingredient_unit')
-																		.prop({id: 'entry_entry_ingredients_attributes_' + count + '_unit', name: 'entry[entry_ingredients_attributes][' + count + '][unit]'})
+																		.prop({id: 'entry_entry_ingredients_attributes_' + count + '_unit_id', name: 'entry[entry_ingredients_attributes][' + count + '][unit_id]'})
 																			.end();
 		$('#ingredient_list').append(field);
 	})

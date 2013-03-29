@@ -25,7 +25,7 @@
 		<%= ingredient.name %> - 
 			<% for portion in ingredient.entry_ingredients %>
 				<%= portion.quantity %>
-				<%= portion.unit %>
+				<%= portion.unit.name %>
 			<% end %>
 	</li>
 	<% end %>
