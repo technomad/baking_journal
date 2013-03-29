@@ -28,14 +28,15 @@ ActiveRecord::Schema.define(:version => 20130328234323) do
   create_table "entry_ingredients", :force => true do |t|
     t.integer  "entry_id"
     t.integer  "ingredient_id"
+    t.integer  "unit_id"
     t.decimal  "quantity",      :precision => 10, :scale => 2
-    t.string   "unit"
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
   end
 
   add_index "entry_ingredients", ["entry_id", "ingredient_id"], :name => "index_entry_ingredients_on_entry_id_and_ingredient_id"
   add_index "entry_ingredients", ["ingredient_id"], :name => "entry_ingredients_ingredient_id_fk"
+  add_index "entry_ingredients", ["unit_id"], :name => "entry_ingredients_unit_id_fk"
 
   create_table "ingredients", :force => true do |t|
     t.string   "name"
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20130328234323) do
 
   add_foreign_key "entry_ingredients", "entries", :name => "entry_ingredients_entry_id_fk", :dependent => :delete
   add_foreign_key "entry_ingredients", "ingredients", :name => "entry_ingredients_ingredient_id_fk", :dependent => :delete
+  add_foreign_key "entry_ingredients", "units", :name => "entry_ingredients_unit_id_fk", :dependent => :delete
 
   add_foreign_key "steps", "entries", :name => "steps_entry_id_fk", :dependent => :delete
 

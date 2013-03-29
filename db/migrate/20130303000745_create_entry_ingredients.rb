@@ -12,6 +12,7 @@ class CreateEntryIngredients < ActiveRecord::Migration
     
     add_foreign_key :entry_ingredients, :entries, :dependent => :delete
     add_foreign_key :entry_ingredients, :ingredients, :dependent => :delete
+    add_foreign_key :entry_ingredients, :units, :dependent => :delete
   end
 
   def self.down
