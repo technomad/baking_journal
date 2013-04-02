@@ -29,6 +29,8 @@ class EntriesController < ApplicationController
     @entry = Entry.new
     @entry.entry_ingredients.build.build_ingredient
     @entry.steps.build
+    
+    @ingredient = Ingredient.where(params[:ingredient]).first_or_create()
 
     respond_to do |format|
       format.html # new.html.erb
